@@ -10,21 +10,30 @@
 }
 
 :root{
-    --mainColor: #29335C;
-    --mainColorLight: #5767aa;
+    --mainColor: #131313;
+    --mainColorLight: #1B1B1B;
     --secondaryColor: #DB2B39;
-    --textColor: #eee;
+    --textColor: #5E5E5E;
 }
 
 
 header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
+    width: 100%;
     padding: 0 2rem;
     background-color: var(--mainColor);
     color: var(--textColor);
+    border-bottom: 2px solid black;
+}
+
+#bricks-header.sticky.scrolling root {
+    border-color: red;
 }
 
 .link {
@@ -36,6 +45,11 @@ header {
 .link:hover {
     color: var(--secondaryColor);
 }
+
+.active {
+    color: white;
+}
+
 
 header .nav-btn {
     padding: 5px;
