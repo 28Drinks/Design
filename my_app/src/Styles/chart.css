@@ -1,0 +1,9 @@
+#root {
+    background-color: var(--mainColor);
+    height: 100vh;
+}
+
+.chart {
+    width: 80%;
+    background-color: black;
+}

@@ -32,9 +32,11 @@ header {
     border-bottom: 2px solid black;
 }
 
-#bricks-header.sticky.scrolling root {
-    border-color: red;
+
+.pageContentContainer {
+    padding: 120px 200px;
 }
+
 
 .link {
     margin: 0 2rem;

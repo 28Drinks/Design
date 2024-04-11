@@ -2,7 +2,7 @@ import { FaBars, FaTimes } from 'react-icons/fa'
 
 import { useRef, useState, useEffect } from "react";
 import "../Styles/main.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import FlashMessage from "./Messages";
 
 import React from 'react';
@@ -14,6 +14,9 @@ const Navbar = () => {
     const [hasBorder, setHasBorder] = useState(false);
     const navRef = useRef();
     const loc = useLocation();
+    const [ searchTerm, setSearchTerm ] = useState('');
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,9 +38,9 @@ const Navbar = () => {
 
     const isActive = (path) => {
         if (path === "/") {
-            return location.pathname === path;
+            return loc.pathname === path;
         } else {
-            return location.pathname.startsWith(path);
+            return loc.pathname.startsWith(path);
         }
     };
 
@@ -45,41 +48,39 @@ const Navbar = () => {
         navRef.current.classList.toggle("responsive_nav")
     };
 
-    const handleLogout = () => {
-        if (localStorage.getItem("token")) {
-            localStorage.removeItem('token');
-            setFlashMessage("logged out successfully");
-            setFlashMessageType("success");
-            setShowFlashMessage(true);
-        }else {
-            setFlashMessage("log out failed");
-            setFlashMessageType("danger");
-            setShowFlashMessage(true);
-        };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        navigate(`/sportbot/${searchTerm}`)
+        setSearchTerm('');
     };
+
 
   return (
     <>
         <header style={{ borderBottom: hasBorder ? '1.5px solid #1B1B1B' : 'none'}}>
             <h3>Logo</h3>
             <nav ref={navRef}>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Enter Bot ID'/>
+                </form>
                 <NavLink exact className={`link ${isActive('/') ? 'active' : ''}`} to='/'>
                     Home
                 </NavLink>
                 <NavLink className={`link ${isActive('/register') ? 'active' : ''}`} to='/register'>
                     Register
                 </NavLink>
+                <NavLink className={`link ${isActive('/chart') ? 'active' : ''}`} to='/chart'>
+                    Chart
+                </NavLink>
                 <NavLink className={`link ${isActive('/login') ? 'active' : ''}`} to='/login'>
                 Login
                 </NavLink>
-                {/* <NavLink className={`link ${isActive('/') ? 'active' : ''}`} onClick={handleLogout}>
-                    Logout
-                </NavLink> */}
                 <NavLink className={`link ${isActive('/profile') ? 'active' : ''}`} to='/profile'>
                     Profile
                 </NavLink>
-                <NavLink className={`link ${isActive('/123') ? 'active' : ''}`} to='/123'>
-                    Inventory
+                <NavLink className={`link ${isActive('/sportbot') ? 'active' : ''}`} to='/sportbot'>
+                    Sportbot
                 </NavLink>
                 <NavLink className={`link ${isActive('/456') ? 'active' : ''}`} to='/456'>
                     All Bobs

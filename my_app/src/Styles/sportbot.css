@@ -1,0 +1,63 @@
+.bot_image {
+    width: 200px;
+    height: 200px;
+}
+
+.submit_form {
+    margin: auto;
+    border: none;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    width: 200px;
+    background-color: var(--mainColor);
+    border: 2px solid var(--mainColorLight);
+    border-radius: 24px;
+    font-size: 16px;
+    background-image: url('');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    color: white;
+    outline: none;
+}
+input[type=text]:focus {
+    border: 2px solid var(--mainColorLight);
+}
+
+
+.sportbot_container {
+    margin: auto;
+    width: 80%;
+}
+
+.container {
+    border: 2px solid var(--mainColorLight);
+    border-radius: 24px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.info_container {
+    color: #FDFDFD;
+}
+
+.section_container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.chart_container > * {
+    margin: auto;
+}
+
+.section_line {
+    height: 0.5px;
+    background-color: var(--mainColorLight);
+    border: none;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
